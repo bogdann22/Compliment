@@ -39,4 +39,10 @@ def text(message):
     if message.text == "Привет":
         bot.send_message(message.chat.id, 'Привет')
 
+
+@bot.message_handler(commands=['compliment'])
+def compliment(message):
+    rnd_compliment = random.choice(data['compliments'])
+    bot.send_message(message.chat.id, rnd_compliment)
+
 bot.polling()
