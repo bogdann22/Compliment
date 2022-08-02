@@ -20,7 +20,7 @@ markup.add(item1)
 def start(message):
     bot.send_message(message.chat.id, 'Привіт Юлічка!👋 Я створив цього бота щоб він говорив тобі компліменти💕', reply_markup=markup)
 
-with open('compliments.json') as f:
+with open('compliments.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 
 
