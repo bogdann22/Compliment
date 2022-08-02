@@ -24,11 +24,17 @@ with open('compliments.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 
 
+@bot.message_handler(commands=['compliment'])
+def compliment(message):
+    rnd_compliment = random.choice(data['compliments'])
+    bot.send_message(message.chat.id, rnd_compliment)
+
+
 @bot.message_handler(content_types=['text'])
 def lalala(message):
     random_compliment = random.choice(data['compliments'])
     if message.chat.type == 'private':
-        if message.text == 'Новий комплімент❤️':
+        if message.text == 'Новий комплімент❤':
             bot.send_message(message.chat.id, random_compliment)
 
 
@@ -38,11 +44,5 @@ def lalala(message):
 def text(message):
     if message.text == "Привет":
         bot.send_message(message.chat.id, 'Привет')
-
-
-@bot.message_handler(commands=['compliment'])
-def compliment(message):
-    rnd_compliment = random.choice(data['compliments'])
-    bot.send_message(message.chat.id, rnd_compliment)
 
 bot.polling()
